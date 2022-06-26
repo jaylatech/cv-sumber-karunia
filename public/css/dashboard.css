@@ -1,0 +1,331 @@
+.dashboard {
+    height: 650px;
+    margin: 0;
+    display: flex;
+}
+main {
+    padding-top: 80px;
+    background-color: rgb(238, 238, 238);
+}
+
+.left-ds {
+    background-color: salmon;
+    flex: 50%;
+}
+.left-ds img {
+    width: 100%;
+    height: 50%;
+}
+.right-ds {
+    flex: 50%;
+}
+.member-announc h1 {
+    background-color: rgb(0, 201, 184);
+    padding: 12px;
+}
+.promo-desc {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+.btn-member {
+    background-color: rgb(0, 177, 162);
+    color: white;
+    padding: 4px 12px;
+    margin-left: 240px;
+}
+.promo-first,
+.promo-desc {
+    padding: 12px;
+}
+
+/* Profil */
+.profil {
+    position: relative;
+    z-index: 0;
+    padding: 30px 0;
+}
+.form__group,
+.form__create {
+    padding: 0 120px;
+}
+
+.form__group input,
+.form__create input,
+.form__group select,
+.form__create select,
+.form__create textarea {
+    background-color: rgb(219, 219, 219);
+    color: black;
+}
+.photo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.photo-form img {
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.form__container .action {
+    display: flex;
+    justify-content: end;
+}
+
+/* gudang */
+.gudang__dashboard,
+.gudang-produk {
+    padding: 0 90px;
+}
+.gudang__dashboard thead {
+    background-color: rgb(0, 201, 184);
+    color: white;
+}
+.gudang-produk-list {
+    margin-top: 50px;
+}
+.gudang-produk-list .btn-1 {
+    margin-bottom: 30px;
+}
+.gudang-create-menu {
+    margin-top: 50px;
+}
+.form-create {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.form-container {
+    display: flex;
+}
+.form__create {
+    margin-top: 30px;
+}
+.form__create .left,
+.form__create .right {
+    flex: 0.5;
+}
+.form__create .left {
+    margin-right: 30px;
+}
+.form__create .right {
+}
+.form__create {
+    padding: 0 80px;
+}
+.form__create .action {
+    margin-left: auto;
+}
+.gudang-produk-foto img {
+    width: 140px;
+}
+.gudang-produk-foto div {
+    display: flex;
+    justify-content: space-evenly;
+}
+.td-action {
+    display: flex;
+    justify-content: space-evenly;
+}
+.gudang-produk {
+    padding: 0;
+}
+.gudang-produk-list {
+    padding: 0 80px;
+}
+.page-link {
+    color: rgb(0, 201, 184);
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: rgb(0, 201, 184);
+    border-color: rgb(0, 201, 184);
+}
+.paginate-link {
+    display: flex;
+    justify-content: center;
+}
+.input__item.area {
+    display: flex;
+    flex-direction: column;
+}
+.input__item.area textarea {
+    border: 0;
+    height: 60px;
+}
+.form__create label {
+    font-size: 15px;
+    font-weight: bold;
+}
+.content {
+    padding: 20px 0;
+}
+
+.produk-container {
+    padding: 0 50px;
+}
+.product-item {
+    box-shadow: rgba(233, 163, 163, 0.2) 0px 2px 8px 0px;
+    width: 300px;
+    height: 260px;
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 12px;
+}
+.product-item img {
+    width: 120px;
+    margin-right: 10px;
+}
+.product-item .product-desc {
+    display: flex;
+    margin-bottom: 12px;
+}
+.form-product-item {
+    text-align: center;
+}
+.form-product-item button {
+    margin-top: 12px;
+}
+.form-product-item label {
+    font-size: 18px;
+    font-weight: bold;
+}
+.form-product-item input {
+    border: 1px solid rgb(0, 201, 184);
+    border-radius: 5px;
+    margin-left: 12px;
+    text-align: center;
+    width: 90px;
+}
+
+.produk-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.produk-detail-container {
+    padding: 12px 50px;
+}
+.produk-detail-content {
+    display: flex;
+    margin-top: 20px;
+}
+.produk-detail-left {
+    flex: 0.4;
+}
+.produk-detail-left div {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+}
+.produk-detail-left div img {
+    width: 250px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+.produk-detail-right {
+    flex: 0.6;
+    padding: 12px 20px;
+}
+.produk-detail-right label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.keranjang {
+    background-color: rgb(206, 206, 206);
+    padding: 12px 100px;
+}
+.keranjang-tabel thead {
+    background-color: rgb(0, 201, 184);
+}
+.form-keranjang-jumlah {
+    display: flex;
+    width: 200px;
+    align-items: center;
+}
+.form-keranjang-jumlah input {
+    border: 1px solid rgb(0, 201, 184);
+    width: 50px;
+}
+.form-keranjang-jumlah button {
+    padding: 5px 10px;
+}
+.keranjang .btn-lanjut {
+    margin-left: 900px;
+}
+.pemesanan-container {
+    /* background-color: red; */
+    padding: 12px 250px;
+}
+.pemesanan-container form,
+.pembayaran form {
+    display: flex;
+    flex-direction: column;
+}
+.pemesanan-container .input__item {
+    /* background-color: blue; */
+}
+.pemesanan-container .input__item label,
+.pembayaran .input__item label {
+    font-weight: bold;
+    font-size: 16px;
+    width: 200px;
+}
+.pemesanan-container .input__item input,
+.pembayaran .input__item input,
+.pembayaran .input__item select {
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 550px;
+}
+
+.pembayaran .input__item input, .pembayaran .input__item select{
+    width: 100%;
+}
+.pemesanan-container .input__item textarea {
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 550px;
+}
+.form-pemesanan-submit {
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 50%;
+}
+.pembayaran {
+    padding: 20px 80px;
+    display: flex;
+}
+.pembayaran-left {
+    padding: 0 15px;
+    flex: 0.5;
+}
+.pembayaran-right {
+    padding: 0 15px;
+    flex: 0.5;
+}
+.pemesanan-container thead{
+    background-color: rgb(0, 201, 184);
+}
+.pemesanan-container{
+    padding: 0 200px;
+}
+.riwayat_orders{
+    padding: 0 120px;
+}
+.register .card {
+    background-color: white;
+}

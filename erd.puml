@@ -1,0 +1,192 @@
+@startuml
+
+entity User{
+    * id: int <PK>
+    --
+    * username: varchar, unique
+    email: varchar, unique
+    password: varchar
+    jenis_kelamin: varchar
+    telepon: varchar
+    member: boolean
+    tanggal_lahir: varchar
+    alamat: varchar
+    TIMESTAMP
+}
+
+entity Role{
+    * id: int <PK>
+    --
+    * name: varchar
+    TIMESTAMP
+}
+
+entity Kategori{
+    * id: int <PK>
+    --
+    * nama: varchar
+    --
+    TIMESTAMP
+}
+
+entity Produk{
+    * id: int <PK>
+    kategori_id <FK>
+    --
+    * kode_produk: varchar
+    nama: varchar
+    harga: int
+    berat: int 
+    masa_penympanan: varchar
+    deskripsi: varchar
+    --
+    TIMESTAMP
+}
+
+entity Stok{
+    * id: int <PK>
+    --
+    * produk_id: int <FK>
+    * stok : int
+    --
+    TIMESTAMP
+}
+
+entity Order{
+    * id: int <PK>
+    * customer_id: int <FK>
+    * pembayaran_id: int <FK>
+    * pengiriman_id: int <FK>
+    * total: int
+    * tanggal_pengiriman: varchar
+    * catatan: varchar
+    --
+    TIMESTAMP
+}
+
+entity OrderDetail{
+    * id: int <PK>
+    --
+    * order_id: int <FK>
+    * produk_id: int <FK>
+    * jumlah: int
+    * harga: int
+    * sub_total: int
+    --
+    TIMESTAMP
+}
+
+entity MetodePembayaran{
+    * id: int <PK>
+    --
+    * nama: varchar
+    * rekening: int
+    --
+    TIMESTAMP
+}
+
+entity RiwayatTransaksi{
+    * id: int <PK>
+    --
+    * customer_id: int <FK>
+    * pembayaran_id: int <FK>
+    * produk_id: int <FK>
+    * order_id: int <FK>
+    --
+    TIMESTAMP
+}
+
+entity Pengiriman{
+    * id: int <PK>
+    --
+    * order_id: int <FK>
+    * status_pengiriman_id: int <FK>
+    * biaya: int
+    * alamat_pengiriman: varchar
+    * keterangan: varchar
+    --
+    TIMESTAMP
+}
+
+entity StatusPengiriman{
+    * id: int <PK>
+    --
+    * status: varchar
+    * keterangan: varchar
+    --
+    TIMESTAMP
+}
+
+entity Pembayaran{
+    * id: int <PK>
+    --
+    * order_id: int <FK>
+    * metode_pembayaran_id: int <FK>
+    * total: int
+    * status: varchar
+    --
+    TIMESTAMP
+}
+
+entity role_user{
+    * id: int <PK>
+    --
+    * user_id: int
+      role_id: int
+    --
+      TIMESTAMP
+}
+
+entity produk_kategori{
+    * id: int <PK>
+    --
+    * produk_id: int <FK>
+    * kategori_id: int <FK>
+    --
+    TIMESTAMP
+}
+
+entity Foto{
+    * id: int <PK>
+    --
+    * produk_id: int <FK>
+    * path: string
+    --
+    TIMESTAMP
+}
+
+entity Keranjang{
+    * id: int <PK>
+    --
+    * customer_id: int <FK>
+    * produk_id: int <FK>
+    * jumlah: int
+    * harga: int
+    * sub_total: int
+    --
+    TIMESTAMP
+}
+
+Keranjang }|--|{ User
+Keranjang }|--|{ Produk
+Order }|-- User
+Produk }|-- Kategori
+Role }|--|{ role_user
+User }|--|{ role_user
+Produk }|--|{ produk_kategori
+Kategori }|--|{ produk_kategori
+Pengiriman }|-- User
+RiwayatTransaksi }|-- User
+RiwayatTransaksi }|-- Pembayaran
+RiwayatTransaksi }|-- Produk
+RiwayatTransaksi }|-- Order
+Stok ||--|| Produk
+Pembayaran }|-- User
+Foto }|--|| Produk
+Order ||--|| Pembayaran
+Order ||--|| Pengiriman
+Pembayaran ||--|| MetodePembayaran
+Keranjang }|--|| Order
+Pengiriman ||--|| StatusPengiriman
+OrderDetail }|--|| Order
+@enduml

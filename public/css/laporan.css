@@ -1,0 +1,32 @@
+.container-laporan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header-laporan {
+    text-align: center;
+}
+.data-laporan {
+    /* background-color: salmon;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 800px;
+    height: 100%;
+  }
+
+.data-laporan thead {
+    background-color: rgb(0, 201, 184);
+}
+table td th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px !important;
+}

@@ -1,0 +1,87 @@
+body {
+    background-image: url(/images/cv.png?fd7a7bb0ddad3461f0ed5f203f6f5682);
+    background-size: cover;
+}
+
+.container {
+    text-align: center;
+}
+.content {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title h1 {
+    color: black;
+    font-weight: bold;
+}
+
+.title {
+    position: relative;
+    top: -70px;
+}
+
+.btn-login,
+.btn-register {
+    background-color: saddlebrown;
+    color: white;
+    padding: 8px 0;
+    border-radius: 12px;
+}
+
+.btn-login:hover,
+.btn-register:hover {
+    color: grey;
+}
+
+.btn-register {
+    margin-top: 20px;
+}
+
+.btn-container {
+    margin-top: 80px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.register .card-header {
+    text-align: center;
+}
+
+.register .card {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.register label {
+    font-weight: bold;
+    color: black;
+    background-color: salmon;
+    width: 180px;
+}
+.register input {
+    width: 500px;
+}
+.register form {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register .card-body {
+    margin: 0 auto;
+}
+.card-header {
+    color: red;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
