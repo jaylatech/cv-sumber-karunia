@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'username' => 'customer',
             'jenis_kelamin' => 'L',
             'telepon' => '123456789',
-            'alamat' => 'Jajag',
+            'alamat' => 'Rogojampi',
             'tanggal_lahir' => '26-08-1999',
             'member' => false
         ]);

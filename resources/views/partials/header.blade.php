@@ -9,9 +9,9 @@ use App\Models\Order;
             Keranjang <span class="badge bg-secondary">{{ count(Auth::user()->keranjangs()->get()) }}</span>
         </a>
     @elseif(Auth::user()->roles[0]->name === 'Admin')
-        <a type="button" href="{{ route('admin.pemesanan') }}" class="btn btn-chart">
+        {{-- <a type="button" href="{{ route('admin.pemesanan') }}" class="btn btn-chart">
             Pesanan Masuk <span
                 class="badge bg-secondary">{{ count(Order::where('status', 'Menunggu Konfirmasi')->get()) }}</span>
-        </a>
+        </a> --}}
     @endif
 </div>

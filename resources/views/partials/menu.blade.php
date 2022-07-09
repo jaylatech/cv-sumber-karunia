@@ -19,9 +19,6 @@
         <li class="{{ Request::is('dashboard') || Request::is('dashboard/*') ? 'active' : '' }}">
             <a href="/dashboard">Dashboard (Admin)</a>
         </li>
-        <li class="{{ Request::is('pemesanan') || Request::is('pemesanan/*') ? 'active' : '' }}">
-            <a href="{{ route('admin.pemesanan') }}">Pemesanan (Admin)</a>
-        </li>
         <li class="{{ Request::is('pembayaran') || Request::is('pembayaran/*') ? 'active' : '' }}">
             <a href="{{ route('admin.pembayaran') }}">Pembayaran (Admin)</a>
         </li>

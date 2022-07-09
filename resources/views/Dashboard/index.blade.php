@@ -39,7 +39,7 @@
                                 <img src={{ isset($produk->photos) && count($produk->photos) > 0 ? asset('images/' . $produk->photos[0]->path) : '' }}
                                     alt="" srcset="">
                                 <div>
-                                    <h5>{{ $produk['produk']['produk']->nama }}</h5>
+                                    <h5>{{ $produk['produk']['produk']->name }}</h5>
                                     <h6>Stok : {{ $produk['produk']['produk']->stok->stok }}</h6>
                                     <a href="{{ route('admin.produk.detail', $produk['produk']['produk']->id) }}"
                                         style="font-style: italic; font-weight: bold">Detail</a>

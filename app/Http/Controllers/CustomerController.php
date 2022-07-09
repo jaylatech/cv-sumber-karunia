@@ -109,7 +109,8 @@ class CustomerController extends Controller
                 // Create Order
                 $barangPesanan = Order::create([
                     'total' => $total,
-                    'berat' => $berat
+                    'berat' => $berat,
+                    'status' => 'Terkonfirmasi'
                 ]);
 
                 // Relasi dengan detail order
