@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('user.login.auth') }}">
                         @csrf
+                        @method('POST')
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>

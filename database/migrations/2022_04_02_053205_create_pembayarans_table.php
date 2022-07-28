@@ -20,6 +20,7 @@ class CreatePembayaransTable extends Migration
             $table->string('status')->nullable();
             $table->string('metode_pembayaran')->nullable();
             $table->string('path')->nullable();
+            $table->integer('expired')->nullable();
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');

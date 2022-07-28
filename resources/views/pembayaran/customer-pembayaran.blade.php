@@ -10,6 +10,16 @@
 
 @php
 use App\Models\Produk;
+use Illuminate\Support\Carbon;
+
+function timestampToDateFormat($date)
+{
+    $tanggal = Carbon::createFromTimestamp($date)
+        ->locale('id')
+        ->translatedFormat('jS F Y h:i:s');
+
+    return $tanggal;
+}
 @endphp
 
 @section('content')
@@ -26,6 +36,7 @@ use App\Models\Produk;
                         <th scope="col">Total Pembayaran</th>
                         <th scope="col">Tanggal Order</th>
                         <th scope="col">Status Pembayaran</th>
+                        <th scope="col">Expired</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -37,11 +48,12 @@ use App\Models\Produk;
                         <tr>
                             <th scope="row">{{ ++$i }}</th>
 
-                            <td>{{ $order->pembayaran->id}}</td>
-                            <td>{{ $order->pembayaran->total}}</td>
-                            <td>{{ $order->created_at}}</td>
-                            <td>{{ $order->pembayaran->status}}</td>
-                            
+                            <td>{{ $order->pembayaran->id }}</td>
+                            <td>{{ $order->pembayaran->total }}</td>
+                            <td>{{ $order->created_at }}</td>
+                            <td>{{ $order->pembayaran->status }}</td>
+                            <td>{{ timestampToDateFormat($order->pembayaran->expired) }}</td>
+
 
                             <form action="" method="POST">
                                 <td class="td-action">

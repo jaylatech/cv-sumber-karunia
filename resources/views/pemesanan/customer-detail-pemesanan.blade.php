@@ -44,13 +44,23 @@ use App\Models\Produk;
                 <input type="text" id="status" name="status" disabled value="{{ $orders->status }}">
             </div>
 
+            <input type="text" hidden value="{{ $orders->total + $biayaKirim[0]['biaya'] }}">
+
             <div class="mb-3 input__item">
                 <label for="alamat_tujuan">Kota Tujuan</label>
                 <select class="" id="alamat_tujuan" name="alamat_tujuan" aria-label="Default select example">
                     <option selected>Pilih kota tujuan</option>
-                    @foreach ($data_kota as $kota)
-                        <option value={{ $kota['city_id'] }}>{{ $kota['city_name'] }}</option>
-                    @endforeach
+                    <option value="Banyuwangi">Banyuwangi</option>
+                    <option value="Jember">Jember</option>
+                    <option value="Bali-Badung">Bali (Badung)</option>
+                    <option value="Bali-Bangli">Bali (Bangli)</option>
+                    <option value="Bali-Buleleng">Bali (Buleleng)</option>
+                    <option value="Bali-Gianyar">Bali (Gianyar)</option>
+                    <option value="Bali-Jembrana">Bali (Jembrana)</option>
+                    <option value="Bali-Karangasem">Bali (Karangasem)</option>
+                    <option value="Bali-Klungkung">Bali (Klungkung)</option>
+                    <option value="Bali-Tabanan">Bali (Tabanan)</option>
+                    <option value="Bali-Denpasar">Bali (Denpasar)</option>
                 </select>
             </div>
             <div class="mb-3 input__item">

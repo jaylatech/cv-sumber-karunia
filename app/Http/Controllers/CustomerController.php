@@ -14,6 +14,7 @@ use App\Models\Riwayat;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class CustomerController extends Controller
 {
@@ -39,19 +40,36 @@ class CustomerController extends Controller
 
     public function cekOngkir(Request $request)
     {
-        $response = Http::withHeaders([
-            'key' => env('RAJA_ONGKIR_API_KEY'),
-            'Content-Type' => 'application/x-www-form-urlencoded'
-        ])->asForm()->post('https://api.rajaongkir.com/starter/cost', [
-            'origin' => 42,
-            'destination' => $request->alamat_tujuan,
-            'weight' => $request->berat_pengiriman,
-            'courier' => 'jne'
-        ]);
+
+        $biaya = 0;
 
 
         $order = Order::find($request->order_id);
         $pengiriman = $order->pengiriman()->get()[0];
+
+        if (strpos($request->alamat_tujuan, 'Banyuwangi') !== false) {
+            $biaya = 5000;
+        } else if (strpos($request->alamat_tujuan, 'Jember') !== false) {
+            $biaya = 7000;
+        } else if (strpos($request->alamat_tujuan, 'Bangli') !== false) {
+            $biaya = 15000;
+        } else if (strpos($request->alamat_tujuan, 'Buleleng') !== false) {
+            $biaya = 15000;
+        } else if (strpos($request->alamat_tujuan, 'Gianyar') !== false) {
+            $biaya = 22000;
+        } else if (strpos($request->alamat_tujuan, 'Jembrana') !== false) {
+            $biaya = 21000;
+        } else if (strpos($request->alamat_tujuan, 'Karangasem') !== false) {
+            $biaya = 21000;
+        } else if (strpos($request->alamat_tujuan, 'Klungkung') !== false) {
+            $biaya = 21000;
+        } else if (strpos($request->alamat_tujuan, 'Tabanan') !== false) {
+            $biaya = 23000;
+        } else if (strpos($request->alamat_tujuan, 'Denpasar') !== false) {
+            $biaya = 15000;
+        } else if (strpos($request->alamat_tujuan, 'Badung') !== false) {
+            $biaya = 12000;
+        }
 
         $order->update([
             'tanggal_pengiriman' => $request->waktu_pengiriman,
@@ -59,9 +77,9 @@ class CustomerController extends Controller
         ]);
 
         $pengiriman->update([
-            'biaya' => $response['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'],
+            'biaya' => $biaya,
             'alamat_pengiriman' => 'Banyuwangi',
-            'tujuan_pengiriman' => $response['rajaongkir']['destination_details']['city_name']
+            'tujuan_pengiriman' => $request->alamat_tujuan
         ]);
 
         return back();
@@ -69,10 +87,14 @@ class CustomerController extends Controller
 
     public function bayarPesanan(Request $request)
     {
+        $expired = time() + 24 * 60 * 60;
+        
+        
         $order = Order::find($request->id_pemesanan);
         $pembayaran = $order->pembayaran()->get()[0];
         $pembayaran->update([
-            'total' => $request->total_biaya
+            'total' => $request->total_biaya,
+            'expired' => $expired
         ]);
 
         Alert::success('Info', "Lanjutkan proses pembayaran");
@@ -181,6 +203,16 @@ class CustomerController extends Controller
         $orders = $request->user()->orders()->get();
 
         return view('pemesanan.customer-pemesanan', compact('orders'));
+    }
+
+    public function timestampToDateFormat($date)
+    {
+
+        $tanggal = Carbon::createFromTimestamp(
+            $date
+        )->locale('id')->translatedFormat('jS F Y h:i:s A');
+
+        return $tanggal;
     }
 
     public function pembayaranView(Request $request)
