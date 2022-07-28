@@ -24,7 +24,7 @@ class ProdukController extends Controller
         $stokBanyak = Stok::with('produk')->orderBy('stok', 'DESC')->limit(3)->get();
         $banyakTerjual = OrderDetail::with('produk')->orderBy('jumlah', 'DESC')->limit(3)->get();
         $sedikitTerjual = OrderDetail::with('produk')->orderBy('jumlah', 'ASC')->limit(3)->get();
-        
+
         return view('dashboard.index-gudang', compact('stokSedikit', 'stokBanyak', 'banyakTerjual', 'sedikitTerjual'));
     }
 
@@ -45,7 +45,7 @@ class ProdukController extends Controller
     public function viewProdukById(Request $request, $id)
     {
         $produk = Produk::with(['stok', 'photos', 'kategoris'])->where('id', $id)->get()[0];
-
+        
         return view('produk.index-gudang-view', compact('produk'));
     }
 
@@ -76,14 +76,16 @@ class ProdukController extends Controller
 
     public function simpanFoto($gambar1 = null, $gambar2 = null, $gambar3 = null)
     {
-        $filePath1 = Storage::disk('local')->put('images', $gambar1);
-        $filePath2 = Storage::disk('local')->put('images', $gambar2);
-        $filePath3 = Storage::disk('local')->put('images', $gambar3);
+        $fileName1 = $gambar1->getClientOriginalName();
+        $fileName2 = $gambar2->getClientOriginalName();
+        $fileName3 = $gambar3->getClientOriginalName();
 
-        $fileName1 = explode('/', $filePath1)[1];
-        $fileName2 = explode('/', $filePath2)[1];
-        $fileName3 = explode('/', $filePath3)[1];
+        $destinationPath = public_path() . "/images";
 
+        $gambar1->move($destinationPath, $fileName1);
+        $gambar2->move($destinationPath, $fileName2);
+        $gambar3->move($destinationPath, $fileName3);
+        
         $foto1 = Foto::create(['path' => $fileName1]);
         $foto2 = Foto::create(['path' => $fileName2]);
         $foto3 = Foto::create(['path' => $fileName3]);
@@ -96,8 +98,8 @@ class ProdukController extends Controller
         $produk = Produk::with(['stok', 'photos', 'kategoris'])->where('id', $id)->get()[0];
         $kategoris = Kategori::all();
         $fotos = $produk->photos()->get('path');
-        
-        
+
+
         return view('produk.edit-gudang', compact('produk', 'kategoris', 'fotos'));
     }
 
@@ -141,7 +143,8 @@ class ProdukController extends Controller
 
 
     // Admin
-    public function adminIndex(){
+    public function adminIndex()
+    {
         return view('produk.index');
     }
 }
